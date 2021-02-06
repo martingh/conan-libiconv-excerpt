@@ -5,6 +5,7 @@ import os
 
 class LibiconvConan(ConanFile):
     name = "libiconv"
+    version = "1.16"
     description = "Convert text to and from Unicode"
     url = "https://github.com/conan-io/conan-center-index"
     homepage = "https://www.gnu.org/software/libiconv/"
