@@ -1,0 +1,22 @@
+--- src/Makefile.in	2019-01-27 23:07:13.000000000 +0100
++++ src/Makefile.in	2021-02-06 20:16:14.425092517 +0100
+@@ -84,7 +84,7 @@
+ 	$(CC) -c $(INCLUDES) -I../lib $(CFLAGS) $(CPPFLAGS) -DINSTALLDIR=\"$(bindir)\" -DLOCALEDIR=\"$(localedir)\" $(srcdir)/iconv.c
+ 
+ iconv.res : $(srcdir)/../windows/iconv.rc
+-	$(WINDRES) `$(SHELL) $(srcdir)/../windows/windres-options --escape $(PACKAGE_VERSION)` -i $(srcdir)/../windows/iconv.rc -o iconv.res --output-format=coff
++	$(WINDRES) `"$(SHELL)" $(srcdir)/../windows/windres-options --escape $(PACKAGE_VERSION)` -i $(srcdir)/../windows/iconv.rc -o iconv.res --output-format=coff
+ 
+ # The following rule is necessary to avoid a toplevel "make -n check" failure.
+ ../lib/libiconv.la :
+--- lib/Makefile.in 2019-04-26 20:58:30.000000000 +0200
++++ lib/Makefile.in	2021-02-06 20:16:50.690267673 +0100
+@@ -91,7 +91,7 @@
+ 	$(LIBTOOL_COMPILE) $(CC) $(INCLUDES) $(CPPFLAGS) $(CFLAGS) $(DEFS) -c $(srcdir)/../woe32dll/iconv-exports.c
+ 
+ libiconv.res.lo : $(srcdir)/../windows/libiconv.rc
+-	$(LIBTOOL_COMPILE) --tag=RC $(RC) `$(SHELL) $(srcdir)/../windows/windres-options --escape $(PACKAGE_VERSION)` -i $(srcdir)/../windows/libiconv.rc -o libiconv.res.lo --output-format=coff
++	$(LIBTOOL_COMPILE) --tag=RC $(RC) `"$(SHELL)" $(srcdir)/../windows/windres-options --escape $(PACKAGE_VERSION)` -i $(srcdir)/../windows/libiconv.rc -o libiconv.res.lo --output-format=coff
+ 
+ # Installs the library and include files only. Typically called with only
+ # $(libdir) and $(includedir) - don't use $(prefix) and $(exec_prefix) here.

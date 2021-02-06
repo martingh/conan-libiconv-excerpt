@@ -31,6 +31,7 @@ class LibiconvConan(ConanFile):
         return self.settings.compiler == "Visual Studio"
 
     def build_requirements(self):
+        tools.patch(patch_file="extra_patches/quote_shell.patch")
         if tools.os_info.is_windows and "CONAN_BASH_PATH" not in os.environ \
                 and tools.os_info.detect_windows_subsystem() != "msys2":
             self.build_requires("msys2/20200517")
