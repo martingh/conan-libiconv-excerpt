@@ -40,7 +40,6 @@ class LibiconvConan(ConanFile):
             del self.options.fPIC
 
     def configure(self):
-        self.output.warn('--> SOURCE ' + self.source_folder)
         if not tools.patch(patch_file="extra_patches/quote_shell.patch"):
             raise Exception("patching failed")
             
