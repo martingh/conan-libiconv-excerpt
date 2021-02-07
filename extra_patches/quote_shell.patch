@@ -5,7 +5,7 @@
  
  iconv.res : $(srcdir)/../windows/iconv.rc
 -	$(WINDRES) `$(SHELL) $(srcdir)/../windows/windres-options --escape $(PACKAGE_VERSION)` -i $(srcdir)/../windows/iconv.rc -o iconv.res --output-format=coff
-+	$(WINDRES) `"$(SHELL)" $(srcdir)/../windows/windres-options --escape $(PACKAGE_VERSION)` -i $(srcdir)/../windows/iconv.rc -o iconv.res --output-format=coff
++	$(WINDRES) `$(SHELL)` `$(srcdir)/../windows/windres-options` --escape $(PACKAGE_VERSION) -i $(srcdir)/../windows/iconv.rc -o iconv.res --output-format=coff
  
  # The following rule is necessary to avoid a toplevel "make -n check" failure.
  ../lib/libiconv.la :
