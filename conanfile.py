@@ -40,6 +40,7 @@ class LibiconvConan(ConanFile):
             del self.options.fPIC
 
     def configure(self):
+        tools.patch(patch_file="extra_patches/quote_shell.patch")
         if self.options.shared:
             del self.options.fPIC
         del self.settings.compiler.libcxx
@@ -117,7 +118,6 @@ class LibiconvConan(ConanFile):
 
     def build(self):
         self._patch_sources()
-        tools.patch(patch_file="extra_patches/quote_shell.patch")
         with self._build_context():
             autotools = self._configure_autotools()
             autotools.make()
