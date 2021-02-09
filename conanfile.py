@@ -40,6 +40,11 @@ class LibiconvConan(ConanFile):
             del self.options.fPIC
 
     def configure(self):
+        print('FILES of CWD')
+        files = [f for f in os.listdir('.')]
+        for f in files:
+            print(f)
+
         if not tools.patch(patch_file="extra_patches/quote_shell.patch"):
             raise Exception("patching failed")
             
